@@ -46,12 +46,12 @@ public class MainTest {
      **/
     private static void saveFile(List<Map<String, String>> mapList) throws IOException {
 
-        File file = new File("/Users/maze/Desktop/image/word");
+        File file = new File("D:\\ocr\\word");
         if(!file.exists()){
             file.mkdir();
         }
-        String fileName = "转换文档"+DateTime.now().toString("yyyyMMddHHmmss")+".doc";
-        file = new File("/Users/maze/Desktop/image/word/"+fileName);
+        String fileName = "转换文档"+DateTime.now().toString("yyyyMMdd")+".doc";
+        file = new File("D:\\ocr\\word\\"+fileName);
         if(!file.exists()){
             file.createNewFile();
         }
@@ -76,7 +76,7 @@ public class MainTest {
 
         List<String> fileNames = new ArrayList<>();
 
-        File file = new File("/Users/maze/Desktop/image/");
+        File file = new File("D:\\ocr\\image");
         File[] files = file.listFiles();
         for(File file1 : files){
             //遇见目录略过，并且略过mac系统中的隐藏文件夹
