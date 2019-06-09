@@ -50,7 +50,7 @@ public class MainTest {
         if(!file.exists()){
             file.mkdir();
         }
-        String fileName = "转换文档"+DateTime.now().toString("yyyyMMdd")+".doc";
+        String fileName = "转换文档"+DateTime.now().getMillis()+".doc";
         file = new File("D:\\ocr\\word\\"+fileName);
         if(!file.exists()){
             file.createNewFile();
@@ -104,7 +104,7 @@ public class MainTest {
         client.setSocketTimeoutInMillis(60000);
 
         for(String fileName : fileNames){
-            JSONObject res = client.basicGeneral(fileName, new HashMap<>());
+            JSONObject res = client.basicAccurateGeneral/*().basicGeneral*/(fileName, new HashMap<>());
             OcrResult ocrResult = json.fromJson(res.toString(), OcrResult.class);
             List<Map<String, String>> mapList = ocrResult.getWordsResult();
             ocrWord.add(json.toJson(mapList));
