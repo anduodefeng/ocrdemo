@@ -44,7 +44,6 @@ public class SortDemo {
             a[min] = temp;
         }
         long endTime = System.currentTimeMillis();
-//        System.out.println("选择排序："+json.toJson(a));
         System.out.println("选择排序时间："+(endTime-startTime));
     }
 
@@ -59,7 +58,6 @@ public class SortDemo {
             a[j] = temp;
         }
         long endTime = System.currentTimeMillis();
-//        System.out.println("插入排序："+json.toJson(a));
         System.out.println("插入排序时间："+(endTime-startTime));
     }
 
@@ -75,11 +73,40 @@ public class SortDemo {
             }
         }
         long endTime = System.currentTimeMillis();
-//        System.out.println("冒泡排序："+json.toJson(a));
         System.out.println("冒泡排序时间："+(endTime-startTime));
     }
 
     private void quickSort(int[] a){
+
+        int core = a[0];
+        int t1 = 0;     //数组下标，不是数组值
+        int t2 = 0;     //数组下标，不是数组值
+        for(int i=1;i<a.length;i++){
+            if(a[i] > core){
+                t1 = i;
+                break;
+            }
+        }
+        for(int j=a.length-1;j>=0;j--){
+            if(a[j] < core){
+                t2 = j;
+                break;
+            }
+        }
+
+        int temp = 0;
+
+        if(t1 == t2){
+            temp = a[t1];
+            a[t1] = core;
+            a[0] = temp;
+        }else{
+            temp = a[t1];
+            a[t1] = a[t2];
+            a[t2] = temp;
+        }
+
+
 
     }
 }
