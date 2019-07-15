@@ -9,5 +9,6 @@ public class WatcherDemo implements Watcher {
     @Override
     public void process(WatchedEvent watchedEvent) {
 
+        System.out.println(watchedEvent.getType());
     }
 }
