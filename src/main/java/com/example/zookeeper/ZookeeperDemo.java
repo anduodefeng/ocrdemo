@@ -11,14 +11,13 @@ public class ZookeeperDemo {
 
         ZooKeeper zooKeeper = new ZooKeeper("172.17.229.81:2181", 5000, new WatcherDemo());
 
-        String result = zooKeeper.create("/tiananweilai","安多的风".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                CreateMode.EPHEMERAL);
-        System.out.println("创建节点"+result);
-        zooKeeper.getData("/tiananweilai",true,null);
+//        String result = zooKeeper.create("/event","安多的风".getBytes(),ZooDefs.Ids.OPEN_ACL_UNSAFE,
+//                CreateMode.PERSISTENT);
+//        System.out.println("创建节点"+result);
 
-        zooKeeper.setData("/tiananweilai", "天空之城".getBytes(), -1);
+        zooKeeper.setData("/event", "546".getBytes(), -1);
 
-        Thread.sleep(2000);
+        System.in.read();
 
     }
 }

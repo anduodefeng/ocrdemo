@@ -35,44 +35,43 @@ public class CuratorWatcherDemo {
         curatorFramework.start();
 
         //nodeCache 监听当前节点发生变化
-//        NodeCache nodeCache = new NodeCache(curatorFramework, "/maze", false);
-//        nodeCache.start(true);
-//
-//        nodeCache.getListenable().addListener(() -> System.out.println("节点发生变化,变化的是值是："+
-//                new String(nodeCache.getCurrentData().getData())));
-//
+        NodeCache nodeCache = new NodeCache(curatorFramework, "/event", false);
+        nodeCache.start(true);
+
+        nodeCache.getListenable().addListener(() -> System.out.println("节点发生变化,变化的是值是："+
+                new String(nodeCache.getCurrentData().getData())));
+
 //        curatorFramework.setData().forPath("/maze", "7月16日".getBytes());
 //        Thread.sleep(5000);
 
         //监听当前节点子路径下节点的变化
-        PathChildrenCache cache=new PathChildrenCache(curatorFramework,"/zhangsan",true);
-        cache.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT);
-        // Normal / BUILD_INITIAL_CACHE /POST_INITIALIZED_EVENT
+//        PathChildrenCache cache=new PathChildrenCache(curatorFramework,"/zhangsan",true);
+//        cache.start(PathChildrenCache.StartMode.POST_INITIALIZED_EVENT);
+//        // Normal / BUILD_INITIAL_CACHE /POST_INITIALIZED_EVENT
+//
+//        cache.getListenable().addListener((curatorFramework1,pathChildrenCacheEvent)->{
+//            System.out.println("类型："+pathChildrenCacheEvent.getType());
+//            switch (pathChildrenCacheEvent.getType()){
+//                case CHILD_ADDED:
+//                    System.out.println("增加子节点");
+//                    break;
+//                case CHILD_REMOVED:
+//                    System.out.println("删除子节点");
+//                    break;
+//                case CHILD_UPDATED:
+//                    System.out.println("更新子节点");
+//                    break;
+//                default:break;
+//            }
+//        });
 
-        cache.getListenable().addListener((curatorFramework1,pathChildrenCacheEvent)->{
-            System.out.println("类型："+pathChildrenCacheEvent.getType());
-            switch (pathChildrenCacheEvent.getType()){
-                case CHILD_ADDED:
-                    System.out.println("增加子节点");
-                    break;
-                case CHILD_REMOVED:
-                    System.out.println("删除子节点");
-                    break;
-                case CHILD_UPDATED:
-                    System.out.println("更新子节点");
-                    break;
-                default:break;
-            }
-        });
-
-        curatorFramework.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/zhangsan/wwwwww","vvvvv".getBytes());
-        Thread.sleep(3000);
-
-        curatorFramework.setData().forPath("/zhangsan/wwwwww", "balbalbalbal".getBytes());
-
-//        curatorFramework.delete().forPath("/maze/wwwwww");
-        Thread.sleep(3000);
-
-
+//        curatorFramework.create().creatingParentsIfNeeded().withMode(CreateMode.PERSISTENT).forPath("/zhangsan/wwwwww","vvvvv".getBytes());
+//        Thread.sleep(3000);
+//
+//        curatorFramework.setData().forPath("/zhangsan/wwwwww", "balbalbalbal".getBytes());
+//
+////        curatorFramework.delete().forPath("/maze/wwwwww");
+//        Thread.sleep(3000);
+        System.in.read();
     }
 }
