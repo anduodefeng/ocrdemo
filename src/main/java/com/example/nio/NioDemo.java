@@ -2,6 +2,7 @@ package com.example.nio;
 
 
 import java.io.*;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.*;
 
@@ -16,10 +17,12 @@ public class NioDemo {
 //        BIOCopy();
 //        NIOCopy();
 //        NIOMultipleCopy();
-        NIOCopy2();
-        long end = System.currentTimeMillis();
+//        NIOCopy2();
+//        long end = System.currentTimeMillis();
+//
+//        System.out.println("复制时间："+(end-start));
 
-        System.out.println("复制时间："+(end-start));
+        URL url = NioDemo.class.getProtectionDomain().getCodeSource().getLocation();
 
     }
 
