@@ -19,7 +19,7 @@ public class NIOClient {
         Selector selector = Selector.open();
         SocketChannel client = SocketChannel.open(inetSocketAddress);
         client.configureBlocking(false);
-//        client.register(selector, SelectionKey.OP_ACCEPT);
+//        client.registry(selector, SelectionKey.OP_ACCEPT);
 
         Scanner scanner = new Scanner(System.in);
         while(scanner.hasNext()){
@@ -35,7 +35,7 @@ public class NIOClient {
 //                    ServerSocketChannel serverSocketChannel = (ServerSocketChannel) selectionKey.channel();
 //                    SocketChannel socketChannel = serverSocketChannel.accept();
 //                    socketChannel.configureBlocking(false);         //非阻塞模式
-//                    socketChannel.register(selector, SelectionKey.OP_READ);
+//                    socketChannel.registry(selector, SelectionKey.OP_READ);
 //                    System.out.println("connected server..");
 //                }else if(selectionKey.isReadable()){
 //                    SocketChannel socketChannel = (SocketChannel) selectionKey.channel();

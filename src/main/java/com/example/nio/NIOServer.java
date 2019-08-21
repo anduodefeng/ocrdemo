@@ -50,7 +50,7 @@ public class NIOServer {
                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
                     client.read(byteBuffer);
                     System.out.println("client send message："+new String(byteBuffer.array()));
-//                    client.register(selector, SelectionKey.OP_WRITE);
+//                    client.registry(selector, SelectionKey.OP_WRITE);
                 }else if(selectionKey.isWritable()){
                     SocketChannel client = (SocketChannel) selectionKey.channel();
                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
