@@ -19,7 +19,7 @@ public class MqReceiver {
         //创建通道
         Channel channel = connection.createChannel();
         //声明队列
-        channel.queueDeclare("fristQueue", false, false, false, null);
+        channel.queueDeclare("audiQueue", false, false, false, null);
         //定义队列的消费者
         DefaultConsumer defaultConsumer = new DefaultConsumer(channel){
             @Override
@@ -31,7 +31,7 @@ public class MqReceiver {
         };
         channel.basicQos(1);
         //自动回复队列应答 -- RabbitMQ中的消息确认机制 false 自动回复  true 手动回复
-        channel.basicConsume("fristQueue", false, defaultConsumer);
+        channel.basicConsume("audiQueue", false, defaultConsumer);
 
         channel.basicAck(1, true);
     }

@@ -1,5 +1,6 @@
 package com.example.rabbitmq;
 
+import com.rabbitmq.client.BuiltinExchangeType;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
@@ -23,12 +24,19 @@ public class MqSender {
         Channel channel = connection.createChannel();
 
         //创建队列
-        channel.queueDeclare("fristQueue", false, false, false, null);
+        channel.queueDeclare("anduodefengQueue", false, false, false, null);
+        channel.queueDeclare("andiQueue", false, false, false, null);
+
+        channel.exchangeDeclare("myexchange", BuiltinExchangeType.FANOUT);
+
+
+        channel.queueBind("anduodefengQueue", "myexchange", "an");
+        channel.queueBind("andiQueue", "myexchange", "an");
 
         //消息内容
-        for(int i=0;i<100;i++){
-            String message = "This is the "+ (i+1) +" Queue";
-            channel.basicPublish("", "fristQueue", null, message.getBytes());
+        for(int i=0;i<2;i++){
+            String message = "This is the "+ (i+1) +" message";
+            channel.basicPublish("myexchange", "an", null, message.getBytes());
 
             System.out.println("发送消息：" + message);
         }
