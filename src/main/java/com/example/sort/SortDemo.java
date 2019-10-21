@@ -105,8 +105,5 @@ public class SortDemo {
             a[t1] = a[t2];
             a[t2] = temp;
         }
-
-
-
     }
 }
