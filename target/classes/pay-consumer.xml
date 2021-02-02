@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://code.alibabatech.com/schema/dubbo
+                           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!-- 当前项目在整个分布式系统中的唯一名称 -->
+    <dubbo:application name="dubbo-pay" owner="maze"/>
+    <!-- 当前项目使用的注册中心 N/A 表示不使用注册中心-->
+    <dubbo:registry address="zookeeper://172.17.229.81:2181"/>
+    <!-- 当前服务发布依赖的协议，主要有：webservice、thrift、hessian、http 在客户端可以忽略配置-->
+    <dubbo:protocol name="dubbo" port="23282"/>
+    
+    <dubbo:reference id="payService" interface="service.PayService" version="1.0"/>
+
+</beans>
